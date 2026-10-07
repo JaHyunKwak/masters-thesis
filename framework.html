@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Framework | A Multi-Criteria Ranking Pipeline for Somatic Variant Candidate Prioritization in Cardiac Whole-Exome Sequencing</title>
+<link rel='stylesheet' href='style.css'>
+</head>
+<body>
+<a class='skip' href='#main'>Skip to content</a>
+<header><div class='wrap'>
+<p class='site-title'>A Multi-Criteria Ranking Pipeline for Somatic Variant Candidate Prioritization in Cardiac Whole-Exome Sequencing</p>
+<nav aria-label='Primary'><ul>
+<li><a href='index.html'>Overview</a></li>
+<li><a href='motivation.html'>Motivation</a></li>
+<li><a href='framework.html' aria-current='page'>Framework</a></li>
+<li><a href='evaluation.html'>Evaluation</a></li>
+<li><a href='progress.html'>Progress</a></li>
+<li><a href='resources.html'>Resources</a></li>
+</ul></nav>
+</div></header>
+<main id='main' class='wrap'>
+<h1>Framework</h1>
+<p>The pipeline has three phases. Information flows in one direction: nothing from the biological or review phases is fed back into the technical ranking.</p>
+<ol class='pipe' role='list' aria-label='Pipeline stages'>
+<li><small>Phase A &middot; Technical</small><b>Candidate assembly</b>Union of calls from multiple somatic callers on full cardiac WES; the caller of origin is recorded for every candidate.</li>
+<li><small>Phase A &middot; Technical</small><b>Technical feature extraction</b>Multiple technical criteria such as read support, allele fraction, depth, caller concordance and quality indicators.</li>
+<li><small>Phase A &middot; Technical</small><b>Learned technical ranking</b>A learned model scores candidates from technical features only. Candidate model families will be compared; the final architecture is not yet frozen.</li>
+<li class='gate'><small>Boundary</small><b>Fixed Top-K shortlist</b>The protocol will set K before comparison. The order is frozen before any biological annotation is attached.</li>
+<li class='bio'><small>Phase B &middot; Downstream evidence</small><b>Biological and contextual annotation</b>Functional impact, expression, multiome context, conflicting evidence, uncertainty and provenance, shown alongside the rank and never used to change it.</li>
+<li class='rev'><small>Phase C &middot; Review &middot; prototype</small><b>Grounded explanation and audit</b>A language model summarizes only the attached evidence, refers back to its source fields and flags unsupported statements. It cannot reorder candidates or establish truth.</li>
+<li class='rev'><small>Phase C &middot; Review</small><b>Expert evidence report</b>One traceable report per shortlisted candidate; the decision remains with the expert reviewer.</li>
+</ol>
+<h2>Design principles</h2>
+<ul>
+<li><strong>Separation:</strong> technical selection and biological interpretation are distinct, auditable stages.</li>
+<li><strong>Provenance:</strong> every value in a report can be traced to its source and processing step.</li>
+<li><strong>Conflicts and uncertainty are visible:</strong> contradicting evidence is listed, not averaged away.</li>
+<li><strong>Context, not causation:</strong> multiome signals support interpretation but are not treated as causal proof.</li>
+<li><strong>Bounded language model:</strong> the explanation layer is read-only with respect to ranking and outputs.</li>
+</ul>
+</main>
+<footer><div class='wrap'>Master&#39;s thesis project, Pusan National University. Provisional version, last updated 2026-10-07.</div></footer>
+</body>
+</html>

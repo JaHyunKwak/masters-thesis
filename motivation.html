@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Motivation | A Multi-Criteria Ranking Pipeline for Somatic Variant Candidate Prioritization in Cardiac Whole-Exome Sequencing</title>
+<link rel='stylesheet' href='style.css'>
+</head>
+<body>
+<a class='skip' href='#main'>Skip to content</a>
+<header><div class='wrap'>
+<p class='site-title'>A Multi-Criteria Ranking Pipeline for Somatic Variant Candidate Prioritization in Cardiac Whole-Exome Sequencing</p>
+<nav aria-label='Primary'><ul>
+<li><a href='index.html'>Overview</a></li>
+<li><a href='motivation.html' aria-current='page'>Motivation</a></li>
+<li><a href='framework.html'>Framework</a></li>
+<li><a href='evaluation.html'>Evaluation</a></li>
+<li><a href='progress.html'>Progress</a></li>
+<li><a href='resources.html'>Resources</a></li>
+</ul></nav>
+</div></header>
+<main id='main' class='wrap'>
+<h1>Motivation</h1>
+<h2>The review problem</h2>
+<p>Somatic variants in cardiac tissue are an active research question, but cardiac WES is not a setting where a single caller output can be accepted as is. Different somatic callers can disagree, candidate lists may include technical artifacts, and low allele fractions make true events hard to separate from noise. In practice an expert must decide which candidates deserve attention, and that decision is limited by time and by how clearly the evidence is presented.</p>
+<h2>Why separate technical ranking from biology</h2>
+<p>If biological plausibility (for example, a well-known cardiac gene) is mixed into candidate selection, the shortlist can look convincing while hiding weak technical support, and reviewers can no longer tell why a candidate was selected. This project therefore ranks candidates <strong>only on technical criteria</strong>, then presents biological evidence <strong>downstream</strong>, next to the ranking but never inside it.</p>
+<h2>Why a learned, multi-criteria score</h2>
+<p>No single technical signal is sufficient. Read support, allele fraction, caller concordance and quality indicators each capture part of the picture. A learned score can combine them, but only if it is compared honestly against simple alternatives on the same data. Whether it helps is treated as a question to test, not an assumption.</p>
+<h2>Scope</h2>
+<table>
+<tr><th scope='col'>In scope</th><th scope='col'>Out of scope</th></tr>
+<tr><td>Prioritizing candidates for expert review</td><td>Diagnosing or confirming somatic variants</td></tr>
+<tr><td>Traceable evidence and provenance per candidate</td><td>Clinical decision support or clinical benefit claims</td></tr>
+<tr><td>Explicit evaluation of learned technical scoring</td><td>Claims of novel neural architecture superiority</td></tr>
+<tr><td>Multiome data as supporting context</td><td>Causal interpretation of multiome signals</td></tr>
+</table>
+</main>
+<footer><div class='wrap'>Master&#39;s thesis project, Pusan National University. Provisional version, last updated 2026-10-07.</div></footer>
+</body>
+</html>

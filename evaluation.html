@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Evaluation | A Multi-Criteria Ranking Pipeline for Somatic Variant Candidate Prioritization in Cardiac Whole-Exome Sequencing</title>
+<link rel='stylesheet' href='style.css'>
+</head>
+<body>
+<a class='skip' href='#main'>Skip to content</a>
+<header><div class='wrap'>
+<p class='site-title'>A Multi-Criteria Ranking Pipeline for Somatic Variant Candidate Prioritization in Cardiac Whole-Exome Sequencing</p>
+<nav aria-label='Primary'><ul>
+<li><a href='index.html'>Overview</a></li>
+<li><a href='motivation.html'>Motivation</a></li>
+<li><a href='framework.html'>Framework</a></li>
+<li><a href='evaluation.html' aria-current='page'>Evaluation</a></li>
+<li><a href='progress.html'>Progress</a></li>
+<li><a href='resources.html'>Resources</a></li>
+</ul></nav>
+</div></header>
+<main id='main' class='wrap'>
+<h1>Evaluation Design</h1>
+<p class='note'><strong>Status:</strong> evaluation is ongoing. External input preparation is in progress, and no performance figures are published yet. This page states the design that results will be held to.</p>
+<h2>Questions</h2>
+<ol>
+<li>Does the learned technical score place more externally supported candidates in the Top-K than simple baselines on the same candidates?</li>
+<li>Is the ranking stable across reasonable choices of K and across data subsets?</li>
+<li>Does every report field trace back to a recorded source?</li>
+</ol>
+<h2>Labels</h2>
+<p>Reference labels come from <strong>external</strong> evidence sources. They are evaluation labels, not cardiac ground truth. A candidate without external support is counted as <em>unconfirmed</em>, never as an artifact.</p>
+<h2>Metrics at fixed K</h2>
+<p>The protocol will specify K values before comparison and report them together, rather than choose a favorable K after seeing results.</p>
+<p class='formula'>Confirmed yield@K = (confirmed candidates in Top-K) / K</p>
+<p class='formula'>Confirmed-positive recall@K = (confirmed candidates in Top-K) / (all eligible confirmed positives in the evaluation pool)</p>
+<p>Confirmed yield is not true precision when the remaining candidates have unknown status. External evaluations use their documented candidate pool; they do not automatically represent the full cardiac caller union. All methods in each comparison share the same pool, labels and review budget. Missing inputs and failed scores remain accounted for; if fewer than K candidates can be returned, the shortfall is reported.</p>
+<p>Repeated observations of the same event must stay in the same evaluation group. A single-donor study cannot establish generalization across donors. Confirmation-agreement metrics, where justified by the assay records, are distinguished from somatic-origin or artifact-detection accuracy.</p>
+<h2>Baselines</h2>
+<p>Baselines are included only where they can be run on exactly the same candidates and labels:</p>
+<ul>
+<li>ordering by caller concordance (number of agreeing callers);</li>
+<li>ordering by a single technical feature, such as alt-read support or allele fraction;</li>
+<li>a simple rule-based or linear combination of technical features.</li>
+</ul>
+<p>Comparisons that would require different input data are not reported as head-to-head results.</p>
+<h2>Not claimed</h2>
+<ul>
+<li>No end-to-end performance gain is claimed until it is independently confirmed.</li>
+<li>No diagnostic accuracy, clinical benefit or user-study outcome is claimed.</li>
+<li>Language-model output is assessed for faithfulness to evidence, not used as a performance metric for ranking.</li>
+</ul>
+</main>
+<footer><div class='wrap'>Master&#39;s thesis project, Pusan National University. Provisional version, last updated 2026-10-07.</div></footer>
+</body>
+</html>
